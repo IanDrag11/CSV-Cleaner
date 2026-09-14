@@ -1,9 +1,16 @@
 def read_csv_file(filename):
-    with open(filename, 'r') as file:
+    with open(filename, "r") as file:
+        people = []
         for line in file:
-            print(line.strip())
+            x = line.strip()
+            if x == "":
+                continue
+            else:
+                people.append(x)
+        return people
 
-read_csv_file('data.csv')
+cleaned_data = read_csv_file('data.csv')
+print(cleaned_data)
 
 def count_rows(filename):
     with open(filename, "r") as file:
@@ -13,6 +20,7 @@ def count_rows(filename):
         return line_total
 
 print(count_rows('data.csv'))
+
 
 
 
