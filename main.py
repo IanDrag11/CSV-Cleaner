@@ -33,6 +33,5 @@ def check_row_lengths(rows):
         else:
             print("this row is good")
 
-
 check_row_lengths(cleaned_data)
     
