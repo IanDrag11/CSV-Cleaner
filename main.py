@@ -1,3 +1,8 @@
+def main_cleaner(originalCSV, CleanedCSV):
+    cleaned_data = read_csv_file(originalCSV)
+    check_row_lengths(cleaned_data)
+    new_file(cleaned_data, CleanedCSV)
+
 #strips lines of whitespace and adds to people list 
 def read_csv_file(filename):
     with open(filename, "r") as file:
@@ -10,9 +15,6 @@ def read_csv_file(filename):
                 people.append(stripped_line)
         return people
 
-cleaned_data = read_csv_file('data.csv')
-print(cleaned_data)
-
 #Counts the total lines in the csv
 def count_rows(filename):
     with open(filename, "r") as file:
@@ -20,8 +22,6 @@ def count_rows(filename):
         for line in file:
             line_total += 1
         return line_total
-
-print(count_rows('data.csv'))
 
 #Checks the row lengths
 def check_row_lengths(rows):
@@ -33,13 +33,13 @@ def check_row_lengths(rows):
         else:
             print(f"row {i+2} is good")
 
-check_row_lengths(cleaned_data)
-
+# writes cleaned data to new file
 def new_file(rows, filename):
     with open(filename, "w") as new_data:
         for row in rows:
             new_data.write(row)
             new_data.write("\n")
 
-new_file(cleaned_data, "clean_data.csv")
 
+#Clean the dataset
+main_cleaner("data.csv", "clean_data.csv")
