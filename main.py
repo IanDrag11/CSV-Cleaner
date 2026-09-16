@@ -31,7 +31,15 @@ def check_row_lengths(rows):
         if len(row.split(",")) != column_count:
             print(f"Broken Row: {i+2}, Data: {row}")
         else:
-            print("this row is good")
+            print(f"row {i+2} is good")
 
 check_row_lengths(cleaned_data)
-    
+
+def new_file(rows, filename):
+    with open(filename, "w") as new_data:
+        for row in rows:
+            new_data.write(row)
+            new_data.write("\n")
+
+new_file(cleaned_data, "clean_data.csv")
+
